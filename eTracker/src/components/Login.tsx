@@ -23,6 +23,7 @@ const Login = () => {
         </Box>
         <Box
           bg="white"
+          color="black"
           alignItems={"center"}
           margin={3}
           paddingX={3}
