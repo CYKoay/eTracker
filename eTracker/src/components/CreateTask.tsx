@@ -85,10 +85,10 @@ const CreateTask = () => {
               <option value="" label="Select a Category" hidden>
                 Select a Category
               </option>
-              <option value="work">Work</option>
-              <option value="learning">Learning</option>
-              <option value="chores">Chores</option>
-              <option value="others">Others</option>
+              <option value="Work">Work</option>
+              <option value="Learning">Learning</option>
+              <option value="Chores">Chores</option>
+              <option value="Others">Others</option>
             </select>
             {errors && <Text color="red">{errors.category?.message}</Text>}
           </div>

@@ -2,6 +2,8 @@ import { Grid, GridItem, Show } from "@chakra-ui/react";
 import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
 import Home from "./components/Home";
 import Navbar from "./components/Navbar";
+import TaskList from "./components/Task/TaskList";
+import "./App.css";
 
 function App() {
   return (
@@ -20,10 +22,10 @@ function App() {
             </GridItem>
           </Show>
 
-          <GridItem bg="green" area={"main"}>
+          <GridItem bg="black" area={"main"}>
             <Routes>
               <Route path="/" element={<Home />}></Route>
-              <Route path="/task"></Route>
+              <Route path="/task" element={<TaskList />}></Route>
               <Route path="/history"></Route>
             </Routes>
           </GridItem>
