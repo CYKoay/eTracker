@@ -65,10 +65,11 @@ const CreateTask = () => {
       description: data.description,
       status: false,
       title: data.title,
+      comment: "",
     });
     reset();
     closePopup();
-    navigate("/");
+    navigate("/task");
   };
 
   return (

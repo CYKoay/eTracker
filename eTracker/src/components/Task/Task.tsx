@@ -2,6 +2,7 @@ import { Box, Button, Grid, GridItem } from "@chakra-ui/react";
 import { useState } from "react";
 import Popup from "reactjs-popup";
 import { Tasks } from "./TaskList";
+import Complete from "./Complete";
 
 interface Props {
   task: Tasks;
@@ -10,7 +11,7 @@ interface Props {
 const Task = ({ task }: Props) => {
   const [open, setOpen] = useState(false);
   const closePopup = () => setOpen(false);
-  console.log(task.tat);
+
   return (
     <>
       <Button
@@ -21,7 +22,7 @@ const Task = ({ task }: Props) => {
       >
         {task.title}
       </Button>
-      <Popup open={open} onClose={closePopup} modal>
+      <Popup open={open} onClose={closePopup} nested modal>
         {task.status === true ? (
           <Box className="statusBox" backgroundColor="green">
             <div className="status">COMPLETED</div>
@@ -65,6 +66,7 @@ const Task = ({ task }: Props) => {
             <div className="col75">
               <Box className="descriptionBox">{task.description}</Box>
             </div>
+            <Complete task={task} />
           </GridItem>
         </Grid>
       </Popup>

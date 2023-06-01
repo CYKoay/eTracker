@@ -27,6 +27,7 @@ export interface Tasks {
   description: string;
   creatorId: string;
   tat: number;
+  comment: string;
 }
 
 const TaskList = () => {
@@ -36,7 +37,6 @@ const TaskList = () => {
 
   const getList = async () => {
     const data = await getDocs(listRef);
-    console.log(data.docs);
     setTaskList(
       data.docs.map((doc) => ({
         ...doc.data(),
