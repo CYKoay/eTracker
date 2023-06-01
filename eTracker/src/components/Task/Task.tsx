@@ -40,28 +40,24 @@ const Task = ({ task }: Props) => {
             <div className="col75">{task.title}</div>
             <div className="col25">Category: </div>
             <div className="col75">{task.category}</div>
-          </GridItem>
-          <GridItem area={"side"} bg="grey.500">
-            <div className="col25">Status:</div>
+            <div className="col25">Turn-around-time:</div>
             <div className="col75">
-              {task.tat <= 0 ? (
-                <p color="red">EXPIRED</p>
-              ) : (
-                <p color="yellow">PENDING</p>
-              )}
+              {task.tat >= 0 ? task.tat + " days" : "EXPIRED"}
             </div>
-            <div className="col25">TAT:</div>
-            <div className="col75">{task.tat}</div>
           </GridItem>
-          <GridItem area={"bottom"} bg="grey.900">
+          <GridItem area={"side"}>
             <div className="col25">Created by: </div>
             <div className="col75">{task.creator}</div>
             <div className="col25">Creation date: </div>
             <div className="col75">{task.creationDate}</div>
             <div className="col25">Deadline: </div>
             <div className="col75">{task.deadline}</div>
+          </GridItem>
+          <GridItem area={"bottom"} marginTop={10}>
             <div className="col25">Description:</div>
-            <div className="col75">{task.description}</div>
+            <div className="col75">
+              <Box className="descriptionBox">{task.description}</Box>
+            </div>
           </GridItem>
         </Grid>
       </Popup>

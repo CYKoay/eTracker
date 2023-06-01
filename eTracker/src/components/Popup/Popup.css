@@ -54,3 +54,10 @@ textarea{
     padding:10px;
     margin-bottom: 20px;
 }
+
+.descriptionBox{
+    background-color:rgb(56, 54, 54);
+border-radius: 5px;
+padding-left:8px;
+height:100px;}
+                
