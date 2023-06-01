@@ -78,6 +78,7 @@ const TaskList = () => {
             {taskList
               ?.filter((e) => e.creatorId == user?.uid && e.status === false)
               ?.map((e) => ({ ...e, tat: getTAT(e.deadline) }))
+              ?.sort((e, prev) => e.tat - prev.tat)
               ?.map((e) => (
                 <Tr key={e.id}>
                   <Td>

@@ -10,7 +10,7 @@ const Navbar = () => {
           <Link to={"/task"}>Task List</Link>
         </Box>
         <Spacer />
-        <Box bg="white" color={"black"} margin={2} height={10} borderRadius={5}>
+        <Box bg="white" color={"black"} margin={3} height={10} borderRadius={5}>
           <CreateTask />
         </Box>
       </Flex>

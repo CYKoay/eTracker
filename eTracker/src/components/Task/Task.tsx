@@ -13,7 +13,14 @@ const Task = ({ task }: Props) => {
   console.log(task.tat);
   return (
     <>
-      <Button onClick={() => setOpen(!open)}>{task.title}</Button>
+      <Button
+        height={8}
+        marginTop={2}
+        marginBottom={2}
+        onClick={() => setOpen(!open)}
+      >
+        {task.title}
+      </Button>
       <Popup open={open} onClose={closePopup} modal>
         {task.status === true ? (
           <Box className="statusBox" backgroundColor="green">

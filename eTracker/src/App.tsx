@@ -13,7 +13,7 @@ function App() {
           templateAreas={{ base: `"nav" "main"`, lg: `"nav nav" "side main"` }}
           templateColumns={{ base: "1fr", lg: "1fr 4fr" }}
         >
-          <GridItem bg="red" area={"nav"}>
+          <GridItem bg="red" area={"nav"} height="10vh">
             <Navbar />
           </GridItem>
           <Show above="lg">
@@ -22,7 +22,7 @@ function App() {
             </GridItem>
           </Show>
 
-          <GridItem bg="black" area={"main"}>
+          <GridItem bg="black" area={"main"} height="90vh">
             <Routes>
               <Route path="/" element={<Home />}></Route>
               <Route path="/task" element={<TaskList />}></Route>
