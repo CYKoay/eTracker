@@ -1,6 +1,6 @@
 .popup-content {
     align-items: center;
-    background: black;
+    background-color: black;
     margin: 5px;
     padding: 50px;
     width: 80%;
@@ -41,4 +41,16 @@ textarea{
     float:left;
     margin-top: 10px;
    
+}
+
+.status{
+    font-weight: bold;
+    color: black;
+    font-size:larger
+}
+
+.statusBox{
+    border-radius: 5px;
+    padding:10px;
+    margin-bottom: 20px;
 }

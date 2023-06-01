@@ -11,7 +11,7 @@ function App() {
       <Router>
         <Grid
           templateAreas={{ base: `"nav" "main"`, lg: `"nav nav" "side main"` }}
-          templateColumns={{ base: "1fr", lg: "1fr 2fr" }}
+          templateColumns={{ base: "1fr", lg: "1fr 4fr" }}
         >
           <GridItem bg="red" area={"nav"}>
             <Navbar />
