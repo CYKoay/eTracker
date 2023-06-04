@@ -1,8 +1,9 @@
-import { Box, Button, Grid, GridItem } from "@chakra-ui/react";
+import { Box, Button, Grid, GridItem, HStack } from "@chakra-ui/react";
 import { useState } from "react";
 import Popup from "reactjs-popup";
 import { Tasks } from "./TaskList";
 import Complete from "./Complete";
+import Delete from "./Delete";
 
 interface Props {
   task: Tasks;
@@ -66,8 +67,11 @@ const Task = ({ task }: Props) => {
             <div className="col75">
               <Box className="descriptionBox">{task.description}</Box>
             </div>
-            <Complete task={task} />
           </GridItem>
+          <HStack marginTop={10} justify="right">
+            <Complete task={task} />
+            <Delete task={task} />
+          </HStack>
         </Grid>
       </Popup>
     </>

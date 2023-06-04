@@ -37,7 +37,7 @@ const Complete = ({ task }: Props) => {
   };
 
   return (
-    <Button onClick={() => setOpen(!open)}>
+    <Button marginRight={3} onClick={() => setOpen(!open)}>
       COMPLETE
       <Popup open={open} onClose={closePopup} modal>
         <form>
@@ -51,7 +51,11 @@ const Complete = ({ task }: Props) => {
               placeholder="Comment..."
             ></textarea>
           </div>
-          <Button marginLeft="25%" onClick={() => onCompleteTask(task.id)}>
+          <Button
+            marginTop={10}
+            marginLeft="25%"
+            onClick={() => onCompleteTask(task.id)}
+          >
             COMPLETE TASK
           </Button>
         </form>
