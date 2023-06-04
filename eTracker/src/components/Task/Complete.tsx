@@ -1,16 +1,18 @@
 import { Button } from "@chakra-ui/react";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Popup from "reactjs-popup";
 import { doc, updateDoc } from "firebase/firestore";
 import { db } from "../../firebase/firebaseConfig";
 import { Tasks } from "./TaskList";
 import { useNavigate } from "react-router-dom";
+import { AppContext } from "../../App";
 
 interface Props {
   task: Tasks;
 }
 
 const Complete = ({ task }: Props) => {
+  const { dataChange, setDataChange } = useContext(AppContext);
   const [taskComment, setTaskComment] = useState("");
   const [open, setOpen] = useState(false);
   const closePopup = () => setOpen(false);
@@ -30,6 +32,7 @@ const Complete = ({ task }: Props) => {
     const taskDoc = doc(db, "task", id);
     await updateDoc(taskDoc, updateData);
     closePopup();
+    setDataChange(!dataChange);
     navigate("/task");
   };
 

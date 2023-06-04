@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { auth, db } from "../../firebase/firebaseConfig";
 import { BsFillCircleFill } from "react-icons/bs";
 import { collection, getDocs } from "firebase/firestore";
 import {
+  HStack,
   Table,
   TableContainer,
   Tbody,
@@ -14,6 +15,7 @@ import {
 import { IconContext } from "react-icons";
 import Task from "./Task";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { AppContext } from "../../App";
 
 export interface Tasks {
   id: string;
@@ -31,10 +33,11 @@ export interface Tasks {
 }
 
 const TaskList = () => {
+  const { dataChange } = useContext(AppContext);
   const listRef = collection(db, "task");
   const [taskList, setTaskList] = useState<Tasks[] | null>();
-  const [user] = useAuthState(auth);
 
+  const [user] = useAuthState(auth);
   const getList = async () => {
     const data = await getDocs(listRef);
     setTaskList(
@@ -47,7 +50,7 @@ const TaskList = () => {
 
   useEffect(() => {
     getList();
-  }, []);
+  }, [dataChange]);
 
   const getTAT = (deadline: any) => {
     const current = new Date();
@@ -60,7 +63,9 @@ const TaskList = () => {
   return (
     <>
       <div className="header">
-        <h1> List of Current Task</h1>
+        <HStack>
+          <h1> List of Current Task</h1>
+        </HStack>
       </div>
       <TableContainer margin="15px">
         <Table size="sm" variant="striped" width="100%" align="center">

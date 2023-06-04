@@ -8,7 +8,8 @@ import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { addDoc, collection } from "firebase/firestore";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AppContext } from "../App";
 
 interface FormData {
   category: string;
@@ -22,6 +23,7 @@ const CreateTask = () => {
   const closePopup = () => setOpen(false);
   const navigate = useNavigate();
   const [user] = useAuthState(auth);
+  const { dataChange, setDataChange } = useContext(AppContext);
 
   const schema = yup.object({
     category: yup.string().min(1, "Please Select A Category"),
@@ -69,6 +71,7 @@ const CreateTask = () => {
     });
     reset();
     closePopup();
+    setDataChange(!dataChange);
     navigate("/task");
   };
 
