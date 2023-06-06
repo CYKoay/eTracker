@@ -68,11 +68,11 @@ const Task = ({ task }: Props) => {
               <Box className="descriptionBox">{task.description}</Box>
             </div>
           </GridItem>
-          <HStack marginTop={10} justify="right">
-            <Complete task={task} />
-            <Delete task={task} />
-          </HStack>
         </Grid>
+        <HStack marginTop={10} justify="right">
+          <Complete task={task} />
+          <Delete task={task} />
+        </HStack>
       </Popup>
     </>
   );

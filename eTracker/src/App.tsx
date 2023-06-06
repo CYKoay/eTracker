@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import TaskList from "./components/Task/TaskList";
 import "./App.css";
 import { useState, createContext, Dispatch, SetStateAction } from "react";
+import SideBar from "./components/SideBar";
 
 export interface AppContextProps {
   dataChange: boolean;
@@ -34,7 +35,7 @@ function App() {
             </GridItem>
             <Show above="lg">
               <GridItem bg="blue" area={"side"}>
-                Side
+                <SideBar />
               </GridItem>
             </Show>
 

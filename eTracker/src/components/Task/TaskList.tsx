@@ -16,6 +16,7 @@ import { IconContext } from "react-icons";
 import Task from "./Task";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { AppContext } from "../../App";
+import SortSelector from "../SortSelector";
 
 export interface Tasks {
   id: string;
@@ -33,24 +34,42 @@ export interface Tasks {
 }
 
 const TaskList = () => {
-  const { dataChange } = useContext(AppContext);
+  const { dataChange, setDataChange } = useContext(AppContext);
+  const [sortCriteria, setSortCriteria] = useState<keyof Tasks>("tat");
   const listRef = collection(db, "task");
   const [taskList, setTaskList] = useState<Tasks[] | null>();
 
   const [user] = useAuthState(auth);
   const getList = async () => {
     const data = await getDocs(listRef);
+    const rawTaskList = (await data.docs.map((doc) => ({
+      ...doc.data(),
+      id: doc.id,
+    }))) as Tasks[];
     setTaskList(
-      data.docs.map((doc) => ({
-        ...doc.data(),
-        id: doc.id,
-      })) as Tasks[]
+      rawTaskList
+        ?.filter((e) => e.creatorId == user?.uid && e.status === false)
+        ?.map((e) => ({ ...e, tat: getTAT(e.deadline) }))
+        ?.sort((e, prev) => e.tat - prev.tat)
     );
+    setDataChange(!dataChange);
   };
 
   useEffect(() => {
     getList();
   }, [dataChange]);
+
+  const onSelectSortOrder = (key: keyof Tasks) => {
+    setSortCriteria(key);
+    console.log(sortCriteria);
+  };
+
+  const sortedData = taskList?.sort((a, b) => {
+    const valA = a[sortCriteria];
+    const valB = b[sortCriteria];
+
+    return valA < valB ? -1 : 1;
+  });
 
   const getTAT = (deadline: any) => {
     const current = new Date();
@@ -65,6 +84,9 @@ const TaskList = () => {
       <div className="header">
         <HStack>
           <h1> List of Current Task</h1>
+          <SortSelector
+            onSelectSortOrder={() => onSelectSortOrder(sortCriteria)}
+          />
         </HStack>
       </div>
       <TableContainer margin="15px">
@@ -80,46 +102,42 @@ const TaskList = () => {
             </Tr>
           </Thead>
           <Tbody>
-            {taskList
-              ?.filter((e) => e.creatorId == user?.uid && e.status === false)
-              ?.map((e) => ({ ...e, tat: getTAT(e.deadline) }))
-              ?.sort((e, prev) => e.tat - prev.tat)
-              ?.map((e) => (
-                <Tr key={e.id}>
-                  <Td>
-                    {getTAT(e.deadline) <= 0 ? (
-                      <IconContext.Provider value={{ color: "red" }}>
-                        <div>
-                          <BsFillCircleFill />
-                        </div>
-                      </IconContext.Provider>
-                    ) : getTAT(e.deadline) < 2 ? (
-                      <IconContext.Provider value={{ color: "yellow" }}>
-                        <div>
-                          <BsFillCircleFill />
-                        </div>
-                      </IconContext.Provider>
-                    ) : (
-                      <IconContext.Provider value={{ color: "green" }}>
-                        <div>
-                          <BsFillCircleFill />
-                        </div>
-                      </IconContext.Provider>
-                    )}
-                  </Td>
-                  <Td>{e.category}</Td>
-                  <Td>
-                    <Task task={e} />
-                  </Td>
-                  <Td>{e.creator}</Td>
-                  <Td>{e.creationDate}</Td>
-                  <Td>
-                    {getTAT(e.deadline) < 0
-                      ? "Expired"
-                      : getTAT(e.deadline) + " Days"}
-                  </Td>
-                </Tr>
-              ))}
+            {sortedData?.map((e) => (
+              <Tr key={e.id}>
+                <Td>
+                  {getTAT(e.deadline) <= 0 ? (
+                    <IconContext.Provider value={{ color: "red" }}>
+                      <div>
+                        <BsFillCircleFill />
+                      </div>
+                    </IconContext.Provider>
+                  ) : getTAT(e.deadline) < 2 ? (
+                    <IconContext.Provider value={{ color: "yellow" }}>
+                      <div>
+                        <BsFillCircleFill />
+                      </div>
+                    </IconContext.Provider>
+                  ) : (
+                    <IconContext.Provider value={{ color: "green" }}>
+                      <div>
+                        <BsFillCircleFill />
+                      </div>
+                    </IconContext.Provider>
+                  )}
+                </Td>
+                <Td>{e.category}</Td>
+                <Td>
+                  <Task task={e} />
+                </Td>
+                <Td>{e.creator}</Td>
+                <Td>{e.creationDate}</Td>
+                <Td>
+                  {getTAT(e.deadline) < 0
+                    ? "Expired"
+                    : getTAT(e.deadline) + " Days"}
+                </Td>
+              </Tr>
+            ))}
           </Tbody>
         </Table>
       </TableContainer>
