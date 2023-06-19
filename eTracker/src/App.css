@@ -31,7 +31,7 @@
 }
 
 .read-the-docs {
-  color: #888;
+  color: #131212;
 }
 
 .header{
@@ -41,3 +41,30 @@
   font-size: x-large
 }
 
+.emptyTable{
+  margin-top : 30px;
+  font-weight: bolder;
+  font-size: x-large;
+  text-align: center;
+}
+
+options.plugins.legend{
+  position: bottom
+}
+
+.tableRow{
+  background-color: hwb(0 38% 55%);
+}
+
+
+.darkBackground{
+  color:white
+}
+
+
+
+@media (max-width:800px){
+.toHide {
+  display:none
+}
+}

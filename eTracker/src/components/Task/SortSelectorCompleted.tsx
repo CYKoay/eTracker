@@ -8,7 +8,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { BsChevronDown } from "react-icons/bs";
-import { Tasks } from "../App";
+import { Tasks } from "../../App";
 import { GrSort } from "react-icons/gr";
 
 interface Props {
@@ -16,9 +16,9 @@ interface Props {
   sortCriteria: string;
 }
 
-const SortSelector = ({ onSelectSortOrder, sortCriteria }: Props) => {
+const SortSelectorCompleted = ({ onSelectSortOrder, sortCriteria }: Props) => {
   const sortOrders = [
-    { value: "tat", label: "Turn-around-time" },
+    { value: "completionDate", label: "Completion Date" },
     { value: "creationDate", label: "Creation Date" },
     { value: "category", label: "Category" },
     { value: "title", label: "Title" },
@@ -34,7 +34,7 @@ const SortSelector = ({ onSelectSortOrder, sortCriteria }: Props) => {
         <HStack>
           <GrSort />
           <Text marginLeft={1} className="toHide">
-            Order by: {currentSortOrder?.label || "Turn-around-time"}
+            Order by: {currentSortOrder?.label || "Completion Date"}
           </Text>
         </HStack>
       </MenuButton>
@@ -53,4 +53,4 @@ const SortSelector = ({ onSelectSortOrder, sortCriteria }: Props) => {
   );
 };
 
-export default SortSelector;
+export default SortSelectorCompleted;

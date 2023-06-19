@@ -1,4 +1,4 @@
-import { Box, Flex, Text } from "@chakra-ui/react";
+import { Box, Button, Flex, Image, Text } from "@chakra-ui/react";
 import errorImage from "../images/unauthorisedUser.jpg";
 import { auth, provider } from "../firebase/firebaseConfig";
 import { signInWithPopup } from "firebase/auth";
@@ -14,10 +14,15 @@ const Login = () => {
 
   return (
     <>
-      <Flex alignItems={"center"} flexDirection={"column"}>
-        <img src={errorImage} alt="Error" width={400} />
+      <Flex alignItems={"center"} flexDirection={"column"} marginTop={10}>
+        <Image src={errorImage} alt="Error" width={400} borderRadius={20} />
         <Box alignItems={"center"} marginTop={3}>
-          <Text fontSize="2xl">
+          <Text
+            fontSize="2xl"
+            fontFamily={"cursive"}
+            color="black"
+            fontWeight={"bold"}
+          >
             Please Log In with Google Account To Proceed
           </Text>
         </Box>
@@ -29,7 +34,7 @@ const Login = () => {
           paddingX={3}
           borderRadius={5}
         >
-          <button onClick={logInWithGoogle}>Log in with Google Account</button>
+          <Button onClick={logInWithGoogle}>Log in with Google Account</Button>
         </Box>
       </Flex>
     </>

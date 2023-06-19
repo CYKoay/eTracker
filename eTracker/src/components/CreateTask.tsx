@@ -1,4 +1,4 @@
-import { Button, Text } from "@chakra-ui/react";
+import { Button, Text, Tooltip } from "@chakra-ui/react";
 import Popup from "reactjs-popup";
 import "./Popup/Popup.css";
 import * as yup from "yup";
@@ -10,6 +10,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { addDoc, collection } from "firebase/firestore";
 import { useContext, useState } from "react";
 import { AppContext } from "../App";
+import { AiOutlineFileAdd } from "react-icons/ai";
 
 interface FormData {
   category: string;
@@ -27,7 +28,10 @@ const CreateTask = () => {
 
   const schema = yup.object({
     category: yup.string().min(1, "Please Select A Category"),
-    title: yup.string().required("You must add a title"),
+    title: yup
+      .string()
+      .required("You must add a title")
+      .max(30, "The title must be lesser than 30 words."),
     description: yup
       .string()
       .required("You must add a description")
@@ -77,29 +81,40 @@ const CreateTask = () => {
 
   return (
     <>
-      <Button onClick={() => setOpen(!open)}>Create Task</Button>
+      <Tooltip label="Create Task">
+        <Button
+          fontWeight={"extrabold"}
+          fontFamily={"cursive"}
+          onClick={() => setOpen(!open)}
+        >
+          <AiOutlineFileAdd />
+          <Text marginLeft={1} className="toHide">
+            Create Task
+          </Text>
+        </Button>
+      </Tooltip>
       <Popup open={open} onClose={closePopup} modal nested>
-        <div className="header">Create New Task</div>
+        <Text className="popupHeader">Create New Task</Text>
         <form id="createTaskForm" onSubmit={handleSubmit(onCreateTask)}>
-          <div className="col25">
+          <div className="col40">
             <label htmlFor="category">Category: </label>
           </div>
-          <div className="col75">
+          <div className="col60">
             <select {...register("category")}>
               <option value="" label="Select a Category" hidden>
                 Select a Category
               </option>
-              <option value="Work">Work</option>
-              <option value="Learning">Learning</option>
               <option value="Chores">Chores</option>
+              <option value="Learning">Learning</option>
+              <option value="Work">Work</option>
               <option value="Others">Others</option>
             </select>
             {errors && <Text color="red">{errors.category?.message}</Text>}
           </div>
-          <div className="col25">
+          <div className="col40">
             <label htmlFor="title">Title: </label>
           </div>
-          <div className="col75">
+          <div className="col60">
             <input
               type="text"
               placeholder="Title..."
@@ -108,10 +123,10 @@ const CreateTask = () => {
             {errors && <Text color="red">{errors.title?.message}</Text>}
           </div>
 
-          <div className="col25">
+          <div className="col40">
             <label htmlFor="description">Description: </label>
           </div>
-          <div className="col75">
+          <div className="col60">
             <textarea
               placeholder="Description..."
               {...register("description")}
@@ -119,10 +134,10 @@ const CreateTask = () => {
             {errors && <Text color="red">{errors.description?.message}</Text>}
           </div>
 
-          <div className="col25">
+          <div className="col40">
             <label htmlFor="priority">Priority: </label>
           </div>
-          <div className="col75">
+          <div className="col60">
             <select
               {...register("deadline")}
               onChange={(e) => setValue("deadline", e.target.value)}
@@ -137,7 +152,7 @@ const CreateTask = () => {
             </select>
             {errors && <Text color="red">{errors.deadline?.message}</Text>}
           </div>
-          <Button marginTop={5} marginLeft={"25%"} type="submit">
+          <Button marginTop={5} marginLeft={"40%"} type="submit">
             Create Task
           </Button>
         </form>

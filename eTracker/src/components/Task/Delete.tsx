@@ -1,11 +1,10 @@
 import { useContext, useState } from "react";
-import { AppContext } from "../../App";
+import { AppContext, Tasks } from "../../App";
 import { db } from "../../firebase/firebaseConfig";
 import { deleteDoc, doc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import { Button, Text } from "@chakra-ui/react";
 import Popup from "reactjs-popup";
-import { Tasks } from "./TaskList";
 
 interface Props {
   task: Tasks;
@@ -50,7 +49,7 @@ const Delete = ({ task }: Props) => {
             <textarea
               id="confirmation"
               onChange={(e) => setDeleteCon(e.target.value)}
-              placeholder="Type the confirmation here..."
+              placeholder=" Type the confirmation here..."
             ></textarea>
             {errMsg === true && (
               <div>

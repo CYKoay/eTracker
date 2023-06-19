@@ -3,7 +3,7 @@ import { useContext, useState } from "react";
 import Popup from "reactjs-popup";
 import { doc, updateDoc } from "firebase/firestore";
 import { db } from "../../firebase/firebaseConfig";
-import { Tasks } from "./TaskList";
+import { Tasks } from "../../App";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "../../App";
 
@@ -37,7 +37,7 @@ const Complete = ({ task }: Props) => {
   };
 
   return (
-    <Button marginRight={3} onClick={() => setOpen(!open)}>
+    <Button onClick={() => setOpen(!open)}>
       COMPLETE
       <Popup open={open} onClose={closePopup} modal>
         <form>
@@ -48,7 +48,7 @@ const Complete = ({ task }: Props) => {
             <textarea
               id="comment"
               onChange={(e) => setTaskComment(e.target.value)}
-              placeholder="Comment..."
+              placeholder=" Comment..."
             ></textarea>
           </div>
           <Button
