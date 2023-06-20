@@ -27,6 +27,10 @@ const History = () => {
   const [user] = useAuthState(auth);
 
   useEffect(() => {
+    document.title = "Completed Tasks";
+  }, []);
+
+  useEffect(() => {
     const storedData = localStorage.getItem("task");
     if (storedData) {
       const parsedData = JSON.parse(storedData);

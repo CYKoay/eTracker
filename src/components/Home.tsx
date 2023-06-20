@@ -4,11 +4,15 @@ import Login from "./Login";
 import GeneralChart from "./Task/GeneralChart";
 import ChartByCategory from "./Task/ChartByCategory";
 import { Box, Card, CardBody, Grid, GridItem, Text } from "@chakra-ui/react";
+import { useEffect } from "react";
 
 export const categories = ["Chores", "Learning", "Work", "Others"];
 
 const Home = () => {
   const [user] = useAuthState(auth);
+  useEffect(() => {
+    document.title = "Home";
+  }, []);
 
   if (!user) {
     return <Login />;

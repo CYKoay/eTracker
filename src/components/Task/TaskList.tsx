@@ -40,6 +40,10 @@ const TaskList = () => {
     setSortCriteria(key);
   };
 
+  useEffect(() => {
+    document.title = "Pending Tasks";
+  }, []);
+
   const sortedData = pendingTaskList?.sort((a, b) => {
     const valA = a[sortCriteria];
     const valB = b[sortCriteria];
