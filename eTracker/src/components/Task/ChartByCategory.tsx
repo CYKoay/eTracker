@@ -2,15 +2,7 @@ import { Doughnut } from "react-chartjs-2";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js/auto";
 import { TaskContext } from "../../App";
 import { useContext, useState } from "react";
-import {
-  Card,
-  CardBody,
-  CardFooter,
-  CardHeader,
-  Center,
-  GridItem,
-  Text,
-} from "@chakra-ui/react";
+import { Card, CardBody, Text } from "@chakra-ui/react";
 
 ChartJS.register(ArcElement, Legend, Tooltip);
 ChartJS.defaults.plugins.legend.position = "right";
@@ -25,7 +17,7 @@ const ChartByCategory = ({ category }: Props) => {
   const { taskList } = useContext(TaskContext);
   const filteredList = taskList?.filter((e) => e.category == category);
 
-  const [data, setData] = useState({
+  const [data] = useState({
     labels: tatCategory,
     datasets: [
       {

@@ -51,7 +51,7 @@ function App() {
     <>
       <AppContext.Provider value={{ dataChange, setDataChange }}>
         <TaskContext.Provider value={{ taskList, setTaskList }}>
-          <Router>
+          <Router basename="/eTracker">
             <Grid
               templateAreas={{
                 base: `"nav" "main"`,

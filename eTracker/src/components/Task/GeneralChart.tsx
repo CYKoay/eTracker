@@ -11,7 +11,7 @@ ChartJS.defaults.plugins.legend.position = "right";
 
 const GeneralChart = () => {
   const { taskList } = useContext(TaskContext);
-  const [data, setData] = useState({
+  const [data] = useState({
     labels: categories,
     datasets: [
       {

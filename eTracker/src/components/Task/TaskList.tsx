@@ -10,7 +10,6 @@ import {
   Thead,
   Tr,
   Text,
-  Box,
 } from "@chakra-ui/react";
 import { IconContext } from "react-icons";
 import Task from "./Task";
@@ -40,6 +39,10 @@ const TaskList = () => {
   const onSelectSortOrder = (key: keyof Tasks) => {
     setSortCriteria(key);
   };
+
+  useEffect(() => {
+    document.title = "Pending Tasks";
+  }, []);
 
   const sortedData = pendingTaskList?.sort((a, b) => {
     const valA = a[sortCriteria];

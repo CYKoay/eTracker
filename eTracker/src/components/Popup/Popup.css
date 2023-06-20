@@ -1,3 +1,18 @@
+@media (max-width:800px) {
+    .popup-content {
+            align-items: center;
+            background-color: #4d3b44;
+            margin: 10px;
+            padding: 10px;
+            width: 90%;
+            border-radius: 10px;
+            font-family: cursive;
+            font-size:small
+        }
+}
+
+
+
 .popup-content {
     align-items: center;
     background-color: #4d3b44;
@@ -7,6 +22,7 @@
     border-radius: 10px;
     font-family: cursive;
 }
+
 
 input[type=text], select, textarea {
     width: 100%;

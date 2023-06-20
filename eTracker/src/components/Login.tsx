@@ -3,6 +3,7 @@ import errorImage from "../images/unauthorisedUser.jpg";
 import { auth, provider } from "../firebase/firebaseConfig";
 import { signInWithPopup } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -11,6 +12,10 @@ const Login = () => {
     await signInWithPopup(auth, provider);
     navigate("/");
   };
+
+  useEffect(() => {
+    document.title = "Login";
+  }, []);
 
   return (
     <>

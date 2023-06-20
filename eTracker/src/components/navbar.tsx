@@ -16,7 +16,7 @@ import {
   Tooltip,
 } from "@chakra-ui/react";
 import CreateTask from "./CreateTask";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { auth } from "../firebase/firebaseConfig";
 import { HiUserCircle } from "react-icons/hi";
 import { signOut } from "firebase/auth";
