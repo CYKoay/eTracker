@@ -10,7 +10,6 @@ import {
 import { BsChevronDown } from "react-icons/bs";
 import { Tasks } from "../../App";
 import { GrSort } from "react-icons/gr";
-import { IconContext } from "react-icons";
 
 interface Props {
   onSelectSortOrder: (key: keyof Tasks) => void;

@@ -7,8 +7,6 @@ import {
   DrawerContent,
   DrawerHeader,
   DrawerOverlay,
-  Flex,
-  GridItem,
   HStack,
   Text,
   useDisclosure,
