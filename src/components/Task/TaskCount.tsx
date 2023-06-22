@@ -19,7 +19,7 @@ const TaskCount = () => {
   return (
     <Card
       marginTop="20%"
-      marginX={10}
+      marginX={5}
       backgroundColor={"#9F838C"}
       textAlign={"center"}
       borderRadius={10}
@@ -175,18 +175,18 @@ const TaskCount = () => {
         <HStack
           justify={"space-evenly"}
           marginTop={3}
-          fontSize={"lg"}
+          fontSize={"smaller"}
           fontWeight={"bold"}
           fontFamily={"cursive"}
         >
-          <div className="darkBackground">TOTAL : </div>
+          <div className="darkBackground">TOTAL: </div>
           <div>
             <Badge
-              width={10}
+              width={8}
               borderRadius={3}
-              fontSize="lg"
-              colorScheme="white"
-              marginRight={6}
+              fontSize="medium"
+              colorScheme="whiteAlpha"
+              marginRight={5}
               fontFamily={"cursive"}
               color="white"
             >

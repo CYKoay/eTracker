@@ -59,7 +59,7 @@ const TaskList = () => {
   }
   return (
     <>
-      <HStack justify={"space-between"} marginRight="15px">
+      <HStack justify={"space-between"} marginX="20px">
         <div className="header">
           <Text
             fontSize="4xl"

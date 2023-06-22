@@ -37,7 +37,7 @@ const Complete = ({ task }: Props) => {
   };
 
   return (
-    <Button onClick={() => setOpen(!open)}>
+    <Button onClick={() => setOpen(!open)} bg="#5FDC3C">
       COMPLETE
       <Popup open={open} onClose={closePopup} modal>
         <form>
@@ -55,6 +55,7 @@ const Complete = ({ task }: Props) => {
             marginTop={10}
             marginLeft="25%"
             onClick={() => onCompleteTask(task.id)}
+            bg="#5FDC3C"
           >
             COMPLETE TASK
           </Button>

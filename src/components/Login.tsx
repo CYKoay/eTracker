@@ -20,8 +20,14 @@ const Login = () => {
   return (
     <>
       <Flex alignItems={"center"} flexDirection={"column"} marginTop={10}>
-        <Image src={errorImage} alt="Error" width={400} borderRadius={20} />
-        <Box alignItems={"center"} marginTop={3}>
+        <Image
+          src={errorImage}
+          alt="Error"
+          width="80%"
+          maxWidth={400}
+          borderRadius={20}
+        />
+        <Box textAlign={"center"} marginTop={3}>
           <Text
             fontSize="2xl"
             fontFamily={"cursive"}
@@ -36,10 +42,11 @@ const Login = () => {
           color="black"
           alignItems={"center"}
           margin={3}
-          paddingX={3}
           borderRadius={5}
         >
-          <Button onClick={logInWithGoogle}>Log in with Google Account</Button>
+          <Button onClick={logInWithGoogle} width="100%">
+            Log in with Google Account
+          </Button>
         </Box>
       </Flex>
     </>

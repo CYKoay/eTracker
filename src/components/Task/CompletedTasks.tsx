@@ -7,6 +7,8 @@ import {
   DrawerContent,
   DrawerHeader,
   DrawerOverlay,
+  Flex,
+  GridItem,
   HStack,
   Text,
   useDisclosure,
@@ -24,16 +26,27 @@ const CompletedTasks = ({ task }: Props) => {
   console.log(task.comment);
   return (
     <>
-      <Button onClick={onOpen}>Expand details</Button>
+      <Button onClick={onOpen} bg="#9F838C" color="white">
+        Expand details
+      </Button>
       <Drawer isOpen={isOpen} placement="right" onClose={onClose} size="lg">
         <DrawerOverlay />
-        <DrawerContent backgroundColor="#4d3b44" fontFamily={"cursive"}>
+        <DrawerContent
+          backgroundColor="#4d3b44"
+          fontFamily={"cursive"}
+          color="white"
+        >
           <Box marginLeft={3}>
             <DrawerCloseButton />
-            <DrawerHeader fontSize="3xl" fontWeight={"bold"} marginY="50px">
+            <DrawerHeader
+              fontSize="3xl"
+              fontWeight={"bold"}
+              marginY="30px"
+              textAlign={"center"}
+            >
               {task.title}
             </DrawerHeader>
-            <DrawerBody fontSize={"large"}>
+            <DrawerBody className="historyDescription">
               <div className="col40">Status: </div>
               <div className="col60">
                 {task.status == true && (
@@ -57,8 +70,10 @@ const CompletedTasks = ({ task }: Props) => {
               <div className="col60">{task.creationDate}</div>
               <div className="col40">Completion Date:</div>
               <div className="col60">{task.completionDate}</div>
+
               <div className="col40">Description: </div>
               <div className="col60">{task.description}</div>
+
               <div className="col40">Comment: </div>
               <div className="col60">
                 <Box className="descriptionBox">{task.comment}</Box>

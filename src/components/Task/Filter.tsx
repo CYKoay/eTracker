@@ -14,9 +14,10 @@ const Filter = ({ onSelect, filterCriteria }: Props) => {
     { value: "Others", label: "Others" },
   ];
   return (
-    <HStack margin="15px">
+    <HStack margin="20px">
       {categories.map((category) => (
         <Button
+          color="white"
           key={category.value}
           style={{
             backgroundColor:

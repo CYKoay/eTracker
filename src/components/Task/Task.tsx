@@ -17,6 +17,8 @@ const Task = ({ task }: Props) => {
   return (
     <>
       <Button
+        bg="#9F838C"
+        className="taskButton"
         height={8}
         marginTop={2}
         marginBottom={2}
@@ -32,7 +34,7 @@ const Task = ({ task }: Props) => {
             <div className="status">COMPLETED</div>
           </Box>
         ) : task.tat >= 0 ? (
-          <Box className="statusBox" backgroundColor="#FFE766">
+          <Box className="statusBox" backgroundColor="yellow">
             <div className="status"> PENDING</div>
           </Box>
         ) : (

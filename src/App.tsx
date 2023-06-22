@@ -53,13 +53,19 @@ function App() {
         <TaskContext.Provider value={{ taskList, setTaskList }}>
           <Router basename="/eTracker">
             <Grid
+              height="100vh"
               templateAreas={{
                 base: `"nav" "main"`,
                 lg: `"nav nav" "side main"`,
               }}
               templateColumns={{ base: "1fr", lg: "1fr 4fr" }}
             >
-              <GridItem bg="#6F5060" area={"nav"} height="70px">
+              <GridItem
+                bg="#6F5060"
+                area={"nav"}
+                height="10vh"
+                minHeight="60px"
+              >
                 <Navbar />
                 <TaskData />
               </GridItem>
@@ -73,7 +79,8 @@ function App() {
                 bg="#DBD3D8"
                 area={"main"}
                 height="90vh"
-                overflowY={"auto"}
+                maxHeight="90vh"
+                overflowY="auto"
               >
                 <Routes>
                   <Route path="/" element={<Home />}></Route>

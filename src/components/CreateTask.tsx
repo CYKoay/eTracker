@@ -152,7 +152,7 @@ const CreateTask = () => {
             </select>
             {errors && <Text color="red">{errors.deadline?.message}</Text>}
           </div>
-          <Button marginTop={5} marginLeft={"40%"} type="submit">
+          <Button marginTop={5} marginLeft={"40%"} type="submit" bg="teal">
             Create Task
           </Button>
         </form>

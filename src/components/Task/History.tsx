@@ -56,7 +56,7 @@ const History = () => {
     <>
       <HStack
         justify={"space-between"}
-        marginRight="15px"
+        marginX="20px"
         maxH="70%"
         overflowY="auto"
       >
@@ -77,12 +77,18 @@ const History = () => {
       </HStack>
       <Filter filterCriteria={filterCriteria} onSelect={(e) => onSelect(e)} />
       <TableContainer
-        margin="15px"
+        margin="20px"
         maxH="70%"
         overflowY="auto"
         borderRadius={10}
       >
-        <Table size="sm" width="100%" align="center" variant="unstyled">
+        <Table
+          size="sm"
+          width="100%"
+          align="center"
+          variant="unstyled"
+          color="white"
+        >
           <Thead bg="#3F403F">
             <Tr height="40px">
               <Th style={{ width: "10%" }}>Category</Th>

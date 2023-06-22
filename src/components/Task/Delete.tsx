@@ -36,7 +36,7 @@ const Delete = ({ task }: Props) => {
   };
 
   return (
-    <Button onClick={() => setOpen(!open)}>
+    <Button onClick={() => setOpen(!open)} bg="#FF4A4A">
       DELETE
       <Popup open={open} onClose={closePopup} modal nested>
         <form>
@@ -61,6 +61,7 @@ const Delete = ({ task }: Props) => {
             marginTop={10}
             marginLeft="25%"
             onClick={() => onDeleteTask(task.title, task.id)}
+            bg="#FF4A4A"
           >
             DELETE TASK
           </Button>

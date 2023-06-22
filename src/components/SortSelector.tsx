@@ -10,6 +10,7 @@ import {
 import { BsChevronDown } from "react-icons/bs";
 import { Tasks } from "../App";
 import { GrSort } from "react-icons/gr";
+import { IconContext } from "react-icons";
 
 interface Props {
   onSelectSortOrder: (key: keyof Tasks) => void;
@@ -30,15 +31,21 @@ const SortSelector = ({ onSelectSortOrder, sortCriteria }: Props) => {
 
   return (
     <Menu>
-      <MenuButton bg="#9F838C" as={Button} rightIcon={<BsChevronDown />}>
+      <MenuButton
+        bg="#9F838C"
+        as={Button}
+        color="white"
+        rightIcon={<BsChevronDown />}
+      >
         <HStack>
-          <GrSort />
+          <GrSort fontSize="20px" className="icon" />
+
           <Text marginLeft={1} className="toHide">
             Order by: {currentSortOrder?.label || "Turn-around-time"}
           </Text>
         </HStack>
       </MenuButton>
-      <MenuList>
+      <MenuList fontFamily={"cursive"}>
         {sortOrders.map((order) => (
           <MenuItem
             onClick={() => onSelectSortOrder(order.value as keyof Tasks)}

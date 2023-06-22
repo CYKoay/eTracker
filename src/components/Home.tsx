@@ -3,7 +3,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import Login from "./Login";
 import GeneralChart from "./Task/GeneralChart";
 import ChartByCategory from "./Task/ChartByCategory";
-import { Box, Card, CardBody, Grid, GridItem, Text } from "@chakra-ui/react";
+import { Box, Grid, GridItem, Text } from "@chakra-ui/react";
 import { useEffect } from "react";
 
 export const categories = ["Chores", "Learning", "Work", "Others"];
@@ -26,57 +26,50 @@ const Home = () => {
         }}
         templateColumns={{ base: "1fr", lg: "1fr 1fr" }}
       >
-        <GridItem area={"main"} margin="auto">
-          <Card
-            width="500px"
-            height="550px"
-            margin="25px"
-            border="none"
-            shadow={"none"}
-          >
-            <CardBody bg="#DBD3D8" border="none">
-              <Box
-                borderRadius={15}
-                bg="#222E50"
-                height={"50px"}
-                textAlign={"center"}
-              >
-                <Text
-                  fontSize="xl"
-                  paddingY="10px"
-                  fontFamily={"cursive"}
-                  fontWeight={"bold"}
-                  color="white"
-                >
-                  Breakdown of Pending Tasks by Categories
-                </Text>
-              </Box>
+        <GridItem area={"main"} bg="#DBD3D8">
+          <Box marginX="auto" className="generalChart">
+            <Box
+              marginX="auto"
+              borderRadius={15}
+              bg="#222E50"
+              height={"50px"}
+              textAlign={"center"}
+              width="85%"
+            >
+              <Text className="generalChartTitle">
+                Breakdown of Pending Tasks by Categories
+              </Text>
+            </Box>
+            <Box marginX="auto">
               <GeneralChart />
-            </CardBody>
-          </Card>
+            </Box>
+          </Box>
         </GridItem>
         <GridItem
           area={"side"}
-          marginX="5vh"
-          marginY="2vh"
-          height="600px"
+          marginX="5%"
+          marginY="3%"
+          height="100%"
+          overflowY="auto"
           width="90%"
           bg="#C1BABA"
           borderRadius={15}
         >
-          <Box textAlign={"center"} marginX="auto" marginY={4} paddingX="auto">
+          <Box textAlign={"center"} marginY={4} paddingX="auto">
             <Text
               marginLeft="15px"
-              fontSize="xl"
               paddingY="10px"
               color="black"
               fontFamily={"cursive"}
               fontWeight={"bold"}
+              className="categoryChart"
             >
               Pending Tasks in each Categories
             </Text>
           </Box>
-          <Grid templateColumns={"repeat(2,1fr)"}>
+          <Grid
+            templateColumns={{ lg: "repeat(2,1fr)", base: "repeat(1,1fr)" }}
+          >
             {categories.map((category) => (
               <ChartByCategory category={category} key={category} />
             ))}
