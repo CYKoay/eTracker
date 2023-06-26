@@ -26,7 +26,7 @@ const TaskCount = () => {
     >
       <CardHeader
         fontSize={"2xl"}
-        fontFamily={"cursive"}
+        fontFamily={"'Belanosima', sans-serif"}
         className="darkBackground"
       >
         Pending Tasks
@@ -53,7 +53,7 @@ const TaskCount = () => {
                   borderRadius={3}
                   fontSize="lg"
                   colorScheme="red"
-                  fontFamily={"cursive"}
+                  fontFamily={"'Belanosima', sans-serif"}
                   className="darkBackground"
                 >
                   0
@@ -62,7 +62,7 @@ const TaskCount = () => {
                 <Badge
                   width={10}
                   borderRadius={3}
-                  fontFamily={"cursive"}
+                  fontFamily={"'Belanosima', sans-serif"}
                   fontSize="lg"
                   colorScheme="red"
                   className="darkBackground"
@@ -98,7 +98,7 @@ const TaskCount = () => {
                   borderRadius={3}
                   fontSize="lg"
                   colorScheme="yellow"
-                  fontFamily={"cursive"}
+                  fontFamily={"'Belanosima', sans-serif"}
                   className="darkBackground"
                 >
                   0
@@ -109,7 +109,7 @@ const TaskCount = () => {
                   borderRadius={3}
                   fontSize="lg"
                   colorScheme="yellow"
-                  fontFamily={"cursive"}
+                  fontFamily={"'Belanosima', sans-serif"}
                   className="darkBackground"
                 >
                   {
@@ -143,7 +143,7 @@ const TaskCount = () => {
                   borderRadius={3}
                   fontSize="lg"
                   colorScheme="green"
-                  fontFamily={"cursive"}
+                  fontFamily={"'Belanosima', sans-serif"}
                   className="darkBackground"
                 >
                   0
@@ -154,7 +154,7 @@ const TaskCount = () => {
                   borderRadius={3}
                   fontSize="lg"
                   colorScheme="green"
-                  fontFamily={"cursive"}
+                  fontFamily={"'Belanosima', sans-serif"}
                   className="darkBackground"
                 >
                   {
@@ -177,7 +177,7 @@ const TaskCount = () => {
           marginTop={3}
           fontSize={"smaller"}
           fontWeight={"bold"}
-          fontFamily={"cursive"}
+          fontFamily={"'Belanosima', sans-serif"}
         >
           <div className="darkBackground">TOTAL: </div>
           <div>
@@ -185,9 +185,9 @@ const TaskCount = () => {
               width={8}
               borderRadius={3}
               fontSize="medium"
-              colorScheme="whiteAlpha"
+              colorScheme="white"
               marginRight={5}
-              fontFamily={"cursive"}
+              fontFamily={"'Belanosima', sans-serif"}
               color="white"
             >
               {taskList?.filter((e) => e.status == false).length}

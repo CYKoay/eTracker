@@ -41,7 +41,7 @@ const Navbar = () => {
           <Tooltip label="Home">
             <Button
               bg="#8B635C"
-              fontFamily={"cursive"}
+              fontFamily={"'Belanosima', sans-serif"}
               color={"white"}
               marginY={3}
               marginLeft={2}
@@ -59,7 +59,7 @@ const Navbar = () => {
             <Button
               bg="#8B635C"
               color={"white"}
-              fontFamily={"cursive"}
+              fontFamily={"'Belanosima', sans-serif"}
               marginY={3}
               marginLeft={2}
               height={10}
@@ -76,7 +76,7 @@ const Navbar = () => {
             <Button
               bg="#8B635C"
               color={"white"}
-              fontFamily={"cursive"}
+              fontFamily={"'Belanosima', sans-serif"}
               marginY={3}
               marginLeft={2}
               height={10}
@@ -96,7 +96,6 @@ const Navbar = () => {
             <Box
               bg="#F9E4BB"
               color={"black"}
-              fontFamily={"cursive"}
               margin={3}
               height={10}
               borderRadius={5}
@@ -119,15 +118,24 @@ const Navbar = () => {
               <Portal>
                 <PopoverContent>
                   <PopoverArrow />
-                  <PopoverHeader fontFamily={"cursive"} fontWeight={"bold"}>
+                  <PopoverHeader
+                    fontFamily={"'Belanosima', sans-serif"}
+                    fontWeight={"600"}
+                  >
                     Current User
                   </PopoverHeader>
                   <PopoverCloseButton />
                   <PopoverBody>
-                    <Text marginBottom={2} fontFamily={"cursive"}>
+                    <Text
+                      marginBottom={2}
+                      fontFamily={"'Belanosima', sans-serif"}
+                    >
                       {user?.displayName}
                     </Text>
-                    <Text marginBottom={2} fontFamily={"cursive"}>
+                    <Text
+                      marginBottom={2}
+                      fontFamily={"'Belanosima', sans-serif"}
+                    >
                       {user?.email}
                     </Text>
                     <HStack justify={"right"} marginTop={8}>

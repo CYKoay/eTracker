@@ -17,6 +17,8 @@ const Filter = ({ onSelect, filterCriteria }: Props) => {
     <HStack margin="20px">
       {categories.map((category) => (
         <Button
+          fontFamily={"'Belanosima', sans-serif"}
+          fontWeight={"300"}
           color="white"
           key={category.value}
           style={{

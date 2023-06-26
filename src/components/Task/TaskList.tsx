@@ -63,9 +63,9 @@ const TaskList = () => {
         <div className="header">
           <Text
             fontSize="4xl"
-            fontFamily={"cursive"}
+            fontFamily={"'Belanosima', sans-serif"}
             color="#222E50"
-            fontWeight={"bold"}
+            fontWeight={"600"}
           >
             List of Current Task
           </Text>

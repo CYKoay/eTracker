@@ -30,7 +30,7 @@ const Login = () => {
         <Box textAlign={"center"} marginTop={3}>
           <Text
             fontSize="2xl"
-            fontFamily={"cursive"}
+            fontFamily={"'Belanosima', sans-serif"}
             color="black"
             fontWeight={"bold"}
           >
@@ -41,6 +41,7 @@ const Login = () => {
           bg="white"
           color="black"
           alignItems={"center"}
+          fontFamily={"'Belanosima', sans-serif"}
           margin={3}
           borderRadius={5}
         >

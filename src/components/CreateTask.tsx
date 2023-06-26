@@ -83,8 +83,7 @@ const CreateTask = () => {
     <>
       <Tooltip label="Create Task">
         <Button
-          fontWeight={"extrabold"}
-          fontFamily={"cursive"}
+          fontFamily={"'Belanosima', sans-serif"}
           onClick={() => setOpen(!open)}
         >
           <AiOutlineFileAdd />

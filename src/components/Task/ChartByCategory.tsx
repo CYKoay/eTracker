@@ -56,8 +56,8 @@ const ChartByCategory = ({ category }: Props) => {
       <CardBody paddingTop={-2} paddingBottom={4} textAlign={"center"}>
         <Text
           paddingTop={1}
-          fontFamily={"cursive"}
-          fontWeight={"bold"}
+          fontFamily={"'Belanosima', sans-serif"}
+          fontWeight={"600"}
           color="#222E50"
         >
           {category}

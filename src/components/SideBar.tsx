@@ -16,9 +16,9 @@ const SideBar = () => {
             height="50px"
             width="50px"
             borderRadius={10}
-            marginRight={3}
+            marginRight={1}
           />
-          <Text fontFamily={"cursive"} fontSize={"xl"}>
+          <Text fontFamily={"'Belanosima', sans-serif"} fontSize={"xl"}>
             {user?.displayName}
           </Text>
         </HStack>

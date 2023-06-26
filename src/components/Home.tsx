@@ -60,8 +60,8 @@ const Home = () => {
               marginLeft="15px"
               paddingY="10px"
               color="black"
-              fontFamily={"cursive"}
-              fontWeight={"bold"}
+              fontFamily={"'Belanosima', sans-serif"}
+              fontWeight={"600"}
               className="categoryChart"
             >
               Pending Tasks in each Categories

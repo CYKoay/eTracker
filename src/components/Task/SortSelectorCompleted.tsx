@@ -39,7 +39,12 @@ const SortSelectorCompleted = ({ onSelectSortOrder, sortCriteria }: Props) => {
         <HStack>
           <GrSort fontSize="20px" className="icon" />
 
-          <Text marginLeft={1} className="toHide">
+          <Text
+            marginLeft={1}
+            className="toHide"
+            fontWeight={"400"}
+            fontFamily={"'Belanosima', sans-serif"}
+          >
             Order by: {currentSortOrder?.label || "Completion Date"}
           </Text>
         </HStack>
@@ -47,7 +52,7 @@ const SortSelectorCompleted = ({ onSelectSortOrder, sortCriteria }: Props) => {
       <MenuList>
         {sortOrders.map((order) => (
           <MenuItem
-            fontFamily={"cursive"}
+            fontFamily={"'Belanosima', sans-serif"}
             onClick={() => onSelectSortOrder(order.value as keyof Tasks)}
             key={order.value}
             value={order.value}

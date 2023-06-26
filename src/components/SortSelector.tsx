@@ -39,12 +39,17 @@ const SortSelector = ({ onSelectSortOrder, sortCriteria }: Props) => {
         <HStack>
           <GrSort fontSize="20px" className="icon" />
 
-          <Text marginLeft={1} className="toHide">
+          <Text
+            marginLeft={1}
+            fontWeight={"400"}
+            className="toHide"
+            fontFamily={"'Belanosima', sans-serif"}
+          >
             Order by: {currentSortOrder?.label || "Turn-around-time"}
           </Text>
         </HStack>
       </MenuButton>
-      <MenuList fontFamily={"cursive"}>
+      <MenuList fontFamily={"'Belanosima', sans-serif"}>
         {sortOrders.map((order) => (
           <MenuItem
             onClick={() => onSelectSortOrder(order.value as keyof Tasks)}

@@ -6,7 +6,7 @@
         padding: 20px;
         width: 85%;
         border-radius: 10px;
-        font-family: cursive;
+        font-family: 'Belanosima',sans-serif;
         color: white;
     }
 }
@@ -20,7 +20,7 @@
     padding: 50px;
     width: 85%;
     border-radius: 10px;
-    font-family: cursive;
+    font-family: 'Belanosima',sans-serif;
     color:white;
 }
 }
@@ -54,7 +54,7 @@ textarea{
     font-size: x-large;
     margin: 5px;
     font-weight: 500;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: 'Belanosima',sans-serif;
     text-align: center;
     color: white;
 }
@@ -104,11 +104,12 @@ textarea{
 
                 
 .popupHeader {
-    font-family: cursive;
+    font-family: 'Belanosima',
+        sans-serif;
     font-size: xx-large;
     margin-bottom: 50px;
     text-align: center;
-    font-weight: bolder;
+    font-weight: 600;
 }
 
 @media(min-width:600px){

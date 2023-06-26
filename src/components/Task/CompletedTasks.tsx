@@ -31,14 +31,15 @@ const CompletedTasks = ({ task }: Props) => {
         <DrawerOverlay />
         <DrawerContent
           backgroundColor="#4d3b44"
-          fontFamily={"cursive"}
+          fontFamily={"'Belanosima', sans-serif"}
           color="white"
         >
           <Box marginLeft={3}>
             <DrawerCloseButton />
             <DrawerHeader
               fontSize="3xl"
-              fontWeight={"bold"}
+              fontWeight={"600"}
+              fontFamily={"'Belanosima', sans-serif"}
               marginY="30px"
               textAlign={"center"}
             >
