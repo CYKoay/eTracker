@@ -78,7 +78,7 @@ const History = () => {
       <Filter filterCriteria={filterCriteria} onSelect={(e) => onSelect(e)} />
       <TableContainer
         margin="20px"
-        maxH="70%"
+        maxH="60%"
         overflowY="auto"
         borderRadius={10}
       >
