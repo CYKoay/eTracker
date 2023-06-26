@@ -44,9 +44,9 @@ const ChartByCategory = ({ category }: Props) => {
 
   return (
     <Card
-      width="245px"
-      height={"220px"}
-      marginY={3}
+      width="85%"
+      height="85%"
+      marginY={2}
       marginX="auto"
       borderRadius={15}
       bg="#FFF2F2"

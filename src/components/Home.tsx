@@ -49,7 +49,7 @@ const Home = () => {
           area={"side"}
           marginX="5%"
           marginY="3%"
-          height="100%"
+          height="95%"
           overflowY="auto"
           width="90%"
           bg="#C1BABA"
