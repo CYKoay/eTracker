@@ -44,9 +44,8 @@ const ChartByCategory = ({ category }: Props) => {
 
   return (
     <Card
-      width="85%"
-      height="85%"
-      marginY={2}
+      width="90%"
+      height="90%"
       marginX="auto"
       borderRadius={15}
       bg="#FFF2F2"
@@ -59,6 +58,7 @@ const ChartByCategory = ({ category }: Props) => {
           fontFamily={"'Belanosima', sans-serif"}
           fontWeight={"600"}
           color="#222E50"
+          fontSize={"medium"}
         >
           {category}
         </Text>

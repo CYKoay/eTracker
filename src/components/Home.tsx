@@ -58,7 +58,7 @@ const Home = () => {
           <Box textAlign={"center"} marginY={4} paddingX="auto">
             <Text
               marginLeft="15px"
-              paddingY="10px"
+              paddingTop="10px"
               color="black"
               fontFamily={"'Belanosima', sans-serif"}
               fontWeight={"600"}
