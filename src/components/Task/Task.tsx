@@ -29,6 +29,9 @@ const Task = ({ task }: Props) => {
         {task.title}
       </Button>
       <Popup open={open} onClose={closePopup} nested modal>
+        <button className="close" onClick={() => setOpen(false)}>
+          &times;
+        </button>
         {task.status === true ? (
           <Box className="statusBox" backgroundColor="#90EC65">
             <div className="status">COMPLETED</div>

@@ -116,3 +116,23 @@ options.plugins.legend{
     font-size: x-large
   }
 }
+
+@media(max-width: 600px){
+.close{
+    font-size:50px;
+    position: absolute;
+    display:block;
+    right: -5px;
+    top:-45px;
+}
+}
+
+@media(min-width: 600px) {
+  .close {
+    font-size: 50px;
+    position: absolute;
+    display: block;
+    right: 5px;
+    top: -25px;
+  }
+}

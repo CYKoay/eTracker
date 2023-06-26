@@ -93,6 +93,9 @@ const CreateTask = () => {
         </Button>
       </Tooltip>
       <Popup open={open} onClose={closePopup} modal nested>
+        <button className="close" onClick={() => setOpen(false)}>
+          &times;
+        </button>
         <Text className="popupHeader">Create New Task</Text>
         <form id="createTaskForm" onSubmit={handleSubmit(onCreateTask)}>
           <div className="col40">
