@@ -64,14 +64,14 @@ const TaskData = () => {
     };
 
     //5 min interval
-    const interval = 5 * 60 * 1000;
+    const interval = 1000;
 
     const dayInterval = setInterval(renderOnNewDay, interval);
 
     return () => {
       clearInterval(dayInterval);
     };
-  });
+  }, []);
 
   return <div></div>;
 };
