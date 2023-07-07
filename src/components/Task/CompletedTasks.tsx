@@ -21,7 +21,6 @@ interface Props {
 
 const CompletedTasks = ({ task }: Props) => {
   const { onOpen, isOpen, onClose } = useDisclosure();
-  console.log(task.comment);
   return (
     <>
       <Button onClick={onOpen} bg="#9F838C" color="white">

@@ -6,7 +6,7 @@ import { collection, getDocs } from "firebase/firestore";
 
 const TaskData = () => {
   const { setTaskList } = useContext(TaskContext);
-  const { dataChange } = useContext(AppContext);
+  const { dataChange, setDataChange } = useContext(AppContext);
   const [user] = useAuthState(auth);
   const listRef = collection(db, "task");
   const [loaded, setLoaded] = useState(true);
@@ -37,7 +37,6 @@ const TaskData = () => {
       setTaskList(userData);
       if (userData.length !== 0) {
         localStorage.setItem("task", JSON.stringify(userData));
-        console.log("saved");
       }
       setLoaded(!loaded);
     };
@@ -50,6 +49,29 @@ const TaskData = () => {
       setTaskList(JSON.parse(storageData));
     }
   }, [loaded]);
+
+  //re-render on new day (hours , min, sec == 0)
+  useEffect(() => {
+    const renderOnNewDay = () => {
+      const now = new Date();
+      const hours = now.getHours();
+      const minutes = now.getMinutes();
+      const seconds = now.getSeconds();
+
+      if (hours === 0 && minutes === 0 && seconds === 0) {
+        setDataChange(!dataChange);
+      }
+    };
+
+    //5 min interval
+    const interval = 5 * 60 * 1000;
+
+    const dayInterval = setInterval(renderOnNewDay, interval);
+
+    return () => {
+      clearInterval(dayInterval);
+    };
+  });
 
   return <div></div>;
 };
