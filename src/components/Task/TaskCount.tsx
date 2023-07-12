@@ -12,10 +12,14 @@ import { BsFillCircleFill } from "react-icons/bs";
 import { TaskContext } from "../../App";
 import { useContext } from "react";
 import "./../../App.css";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../../firebase/firebaseConfig";
 
 const TaskCount = () => {
+  const [user] = useAuthState(auth);
   const { taskList } = useContext(TaskContext);
 
+  const userTask = taskList?.filter((e) => e.creatorId === user?.uid);
   return (
     <Card
       marginTop="20%"
@@ -46,7 +50,7 @@ const TaskCount = () => {
             label="Expired task or task with lesser than 1 day turn-around-time remaining"
           >
             <div>
-              {taskList?.filter((e) => e.status == false && e.tat <= 0)
+              {userTask?.filter((e) => e.status == false && e.tat <= 0)
                 .length == 0 ? (
                 <Badge
                   width={10}
@@ -68,7 +72,7 @@ const TaskCount = () => {
                   className="darkBackground"
                 >
                   {
-                    taskList?.filter((e) => e.status == false && e.tat <= 0)
+                    userTask?.filter((e) => e.status == false && e.tat <= 0)
                       .length
                   }
                 </Badge>
@@ -90,7 +94,7 @@ const TaskCount = () => {
             label="Task with 1-2 days turn-around-time remaining"
           >
             <div>
-              {taskList?.filter(
+              {userTask?.filter(
                 (e) => e.status == false && e.tat > 0 && e.tat <= 2
               ).length == 0 ? (
                 <Badge
@@ -113,7 +117,7 @@ const TaskCount = () => {
                   className="darkBackground"
                 >
                   {
-                    taskList?.filter(
+                    userTask?.filter(
                       (e) => e.status == false && e.tat > 0 && e.tat <= 2
                     ).length
                   }
@@ -136,7 +140,7 @@ const TaskCount = () => {
             label="Task with 3 or more days turn-around-time remaining"
           >
             <div>
-              {taskList?.filter((e) => e.status == false && e.tat > 2).length ==
+              {userTask?.filter((e) => e.status == false && e.tat > 2).length ==
               0 ? (
                 <Badge
                   width={10}
@@ -158,7 +162,7 @@ const TaskCount = () => {
                   className="darkBackground"
                 >
                   {
-                    taskList?.filter((e) => e.status == false && e.tat > 2)
+                    userTask?.filter((e) => e.status == false && e.tat > 2)
                       .length
                   }
                 </Badge>
@@ -190,7 +194,7 @@ const TaskCount = () => {
               fontFamily={"'Belanosima', sans-serif"}
               color="white"
             >
-              {taskList?.filter((e) => e.status == false).length}
+              {userTask?.filter((e) => e.status == false).length}
             </Badge>
           </div>
         </HStack>

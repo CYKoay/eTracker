@@ -23,18 +23,11 @@ import Login from "../Login";
 const TaskList = () => {
   const [sortCriteria, setSortCriteria] = useState<keyof Tasks>("tat");
   const [filterCriteria, setFilterCriteria] = useState("");
-  const [pendingTaskList, setPendingTaskList] = useState<Tasks[] | null>(null);
   const [user] = useAuthState(auth);
-
   const { taskList } = useContext(TaskContext);
-
-  useEffect(() => {
-    const storedData = localStorage.getItem("task");
-    if (storedData) {
-      const parsedData = JSON.parse(storedData);
-      setPendingTaskList(parsedData.filter((e: Tasks) => e.status === false));
-    }
-  }, [taskList]);
+  const pendingTaskList = taskList?.filter(
+    (e) => e.status === false && e.creatorId === user?.uid
+  );
 
   const onSelectSortOrder = (key: keyof Tasks) => {
     setSortCriteria(key);

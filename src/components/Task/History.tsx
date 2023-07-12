@@ -19,24 +19,19 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../firebase/firebaseConfig";
 
 const History = () => {
-  const { taskList } = useContext(TaskContext);
-  const [completedTask, setCompletedTask] = useState<Tasks[] | null>(null);
   const [filterCriteria, setFilterCriteria] = useState("");
   const [sortCriteria, setSortCriteria] =
     useState<keyof Tasks>("completionDate");
   const [user] = useAuthState(auth);
+  const { taskList } = useContext(TaskContext);
 
   useEffect(() => {
     document.title = "Completed Tasks";
   }, []);
 
-  useEffect(() => {
-    const storedData = localStorage.getItem("task");
-    if (storedData) {
-      const parsedData = JSON.parse(storedData);
-      setCompletedTask(parsedData.filter((e: Tasks) => e.status === true));
-    }
-  }, [taskList]);
+  const completedTask = taskList?.filter(
+    (e) => e.status === true && e.creatorId === user?.uid
+  );
 
   const onSelectSortOrder = (key: keyof Tasks) => [setSortCriteria(key)];
 

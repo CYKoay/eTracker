@@ -4,12 +4,16 @@ import Login from "./Login";
 import GeneralChart from "./Task/GeneralChart";
 import ChartByCategory from "./Task/ChartByCategory";
 import { Box, Grid, GridItem, Text } from "@chakra-ui/react";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
+import { TaskContext } from "../App";
 
 export const categories = ["Chores", "Learning", "Work", "Others"];
 
 const Home = () => {
   const [user] = useAuthState(auth);
+  const { taskList } = useContext(TaskContext);
+  const userTask = taskList?.filter((e) => e.creatorId === user?.uid);
+
   useEffect(() => {
     document.title = "Home";
   }, []);
@@ -41,7 +45,7 @@ const Home = () => {
               </Text>
             </Box>
             <Box marginX="auto">
-              <GeneralChart />
+              {userTask && <GeneralChart tasks={userTask} />}
             </Box>
           </Box>
         </GridItem>
@@ -70,9 +74,14 @@ const Home = () => {
           <Grid
             templateColumns={{ lg: "repeat(2,1fr)", base: "repeat(1,1fr)" }}
           >
-            {categories.map((category) => (
-              <ChartByCategory category={category} key={category} />
-            ))}
+            {userTask &&
+              categories.map((category) => (
+                <ChartByCategory
+                  category={category}
+                  key={category}
+                  tasks={userTask}
+                />
+              ))}
           </Grid>
         </GridItem>
       </Grid>

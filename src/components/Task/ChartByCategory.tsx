@@ -1,21 +1,21 @@
 import { Doughnut } from "react-chartjs-2";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js/auto";
-import { TaskContext } from "../../App";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { Card, CardBody, Text } from "@chakra-ui/react";
+import { Tasks } from "../../App";
 
 ChartJS.register(ArcElement, Legend, Tooltip);
 ChartJS.defaults.plugins.legend.position = "right";
 
 interface Props {
   category: string;
+  tasks: Tasks[];
 }
 
-const ChartByCategory = ({ category }: Props) => {
+const ChartByCategory = ({ category, tasks }: Props) => {
   const tatCategory = ["<1 days", "1-2 days", ">2 days"];
 
-  const { taskList } = useContext(TaskContext);
-  const filteredList = taskList?.filter((e) => e.category == category);
+  const filteredList = tasks?.filter((e) => e.category == category);
 
   const [data] = useState({
     labels: tatCategory,
@@ -36,8 +36,8 @@ const ChartByCategory = ({ category }: Props) => {
   });
 
   if (
-    taskList?.filter((e) => e.category == category && e.status == false)
-      .length == 0
+    tasks?.filter((e) => e.category == category && e.status == false).length ==
+    0
   ) {
     return null;
   }

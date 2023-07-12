@@ -1,15 +1,13 @@
 import { AppContext, TaskContext, Tasks } from "../../App";
-import { useContext, useEffect, useState } from "react";
-import { db, auth } from "../../firebase/firebaseConfig";
-import { useAuthState } from "react-firebase-hooks/auth";
+import { useContext, useEffect } from "react";
+import { db } from "../../firebase/firebaseConfig";
 import { collection, getDocs } from "firebase/firestore";
 
 const TaskData = () => {
   const { setTaskList } = useContext(TaskContext);
-  const { dataChange } = useContext(AppContext);
-  const [user] = useAuthState(auth);
+  const { dataChange, setDataChange } = useContext(AppContext);
+
   const listRef = collection(db, "task");
-  const [loaded, setLoaded] = useState(true);
 
   const getTAT = (deadline: any) => {
     const current = new Date();
@@ -21,34 +19,42 @@ const TaskData = () => {
 
   //Get list from DB, set TAT, id and comment.
   //Return unfiltered list
-  const getList = async () => {
-    const data = await getDocs(listRef);
-    return data.docs.map((doc) => ({
+  const fetchData = async () => {
+    const result = await getDocs(listRef);
+    const userData = result.docs.map((doc) => ({
       ...doc.data(),
       id: doc.id,
       tat: getTAT(doc.data().deadline),
     })) as Tasks[];
+    setTaskList(userData);
   };
 
   useEffect(() => {
-    const fetchData = async () => {
-      const result = await getList();
-      const userData = result.filter((e) => e.creatorId == user?.uid);
-      setTaskList(userData);
-      if (userData.length !== 0) {
-        localStorage.setItem("task", JSON.stringify(userData));
-      }
-      setLoaded(!loaded);
-    };
     fetchData();
   }, [dataChange]);
 
+  //re-render on new day (hours , min, sec == 0)
   useEffect(() => {
-    const storageData = localStorage.getItem("task");
-    if (storageData) {
-      setTaskList(JSON.parse(storageData));
-    }
-  }, [loaded]);
+    const renderOnNewDay = () => {
+      const now = new Date();
+      const hours = now.getHours();
+      const minutes = now.getMinutes();
+      const seconds = now.getSeconds();
+
+      if (hours === 0 && minutes === 0 && seconds === 0) {
+        setDataChange(!dataChange);
+      }
+    };
+
+    //5 min interval
+    const interval = 1000;
+
+    const dayInterval = setInterval(renderOnNewDay, interval);
+
+    return () => {
+      clearInterval(dayInterval);
+    };
+  }, []);
 
   return <div></div>;
 };

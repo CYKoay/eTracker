@@ -4,13 +4,7 @@ import Home from "./components/Home";
 import Navbar from "./components/Navbar";
 import TaskList from "./components/Task/TaskList";
 import "./App.css";
-import {
-  useState,
-  createContext,
-  Dispatch,
-  SetStateAction,
-  useEffect,
-} from "react";
+import { useState, createContext, Dispatch, SetStateAction } from "react";
 import SideBar from "./components/SideBar";
 import TaskData from "./components/Task/TaskData";
 import History from "./components/Task/History";
@@ -53,29 +47,6 @@ export const TaskContext = createContext<TaskContextProps>({
 function App() {
   const [dataChange, setDataChange] = useState(true);
   const [taskList, setTaskList] = useState<Tasks[] | null>(null);
-
-  //re-render on new day (hours , min, sec == 0)
-  useEffect(() => {
-    const renderOnNewDay = () => {
-      const now = new Date();
-      const hours = now.getHours();
-      const minutes = now.getMinutes();
-      const seconds = now.getSeconds();
-
-      if (hours === 0 && minutes === 0 && seconds === 0) {
-        setDataChange(!dataChange);
-      }
-    };
-
-    //5 min interval
-    const interval = 1000;
-
-    const dayInterval = setInterval(renderOnNewDay, interval);
-
-    return () => {
-      clearInterval(dayInterval);
-    };
-  }, []);
 
   return (
     <>
