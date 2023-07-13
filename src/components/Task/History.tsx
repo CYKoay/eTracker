@@ -36,9 +36,15 @@ const History = () => {
   const onSelectSortOrder = (key: keyof Tasks) => [setSortCriteria(key)];
 
   const sortedData = completedTask?.sort((a, b) => {
-    const valA = a[sortCriteria];
-    const valB = b[sortCriteria];
-    return valA < valB ? -1 : 1;
+    if (sortCriteria == "completionDate" || sortCriteria == "creationDate") {
+      const valA = Date.parse(a[sortCriteria]);
+      const valB = Date.parse(b[sortCriteria]);
+      return valA < valB ? 1 : -1;
+    } else {
+      const valA = a[sortCriteria];
+      const valB = b[sortCriteria];
+      return valA < valB ? -1 : 1;
+    }
   });
 
   const onSelect = (category: string) => {
