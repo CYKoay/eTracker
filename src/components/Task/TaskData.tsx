@@ -5,7 +5,7 @@ import { collection, getDocs } from "firebase/firestore";
 
 const TaskData = () => {
   const { setTaskList } = useContext(TaskContext);
-  const { dataChange, setDataChange } = useContext(AppContext);
+  const { dataChange } = useContext(AppContext);
 
   const listRef = collection(db, "task");
 
