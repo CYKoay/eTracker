@@ -33,29 +33,6 @@ const TaskData = () => {
     fetchData();
   }, [dataChange]);
 
-  //re-render on new day (hours , min, sec == 0)
-  useEffect(() => {
-    const renderOnNewDay = () => {
-      const now = new Date();
-      const hours = now.getHours();
-      const minutes = now.getMinutes();
-      const seconds = now.getSeconds();
-
-      if (hours === 0 && minutes === 0 && seconds === 0) {
-        setDataChange(!dataChange);
-      }
-    };
-
-    //5 min interval
-    const interval = 1000;
-
-    const dayInterval = setInterval(renderOnNewDay, interval);
-
-    return () => {
-      clearInterval(dayInterval);
-    };
-  }, []);
-
   return <div></div>;
 };
 
